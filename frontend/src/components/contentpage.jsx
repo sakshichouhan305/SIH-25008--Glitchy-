@@ -5,6 +5,11 @@ import AdminDashboard from "./AdminDashboard";
 import Post from "./post";
 import StudentProfile from "./StudentProfile";
 import StudentLeaderboard from "./StudentLeaderboard";
+import TeacherAddAdmin from "./TeacherAddAdmin";
+import TeacherInstitute from "./TeacherInstitute";
+import TeacherLeaderboard from "./TeacherLeaderboard";
+import TeacherManage from "./TeacherManage";
+import TeacherProfile from "./TeacherProfile";
 
 const Content = memo(({ activePage }) => {
   const [userRole, setUserRole] = useState(null);
@@ -50,6 +55,26 @@ const Content = memo(({ activePage }) => {
     // If student selects Leaderboard, show StudentLeaderboard component
     if (activePage === "Leaderboard" && userRole === "student") {
       return <StudentLeaderboard />;
+    }
+    // If teacher selects Add Admin, show TeacherAddAdmin component
+    if (activePage === "Add Admin" && userRole === "teacher") {
+      return <TeacherAddAdmin />;
+    }
+    // If teacher selects Institution, show TeacherInstitute component
+    if (activePage === "Institution" && userRole === "teacher") {
+      return <TeacherInstitute />;
+    }
+    // If teacher selects Leaderboard, show TeacherLeaderboard component
+    if (activePage === "Leaderboard" && userRole === "teacher") {
+      return <TeacherLeaderboard />;
+    }
+    // If teacher selects Management, show TeacherManage component
+    if (activePage === "Management" && userRole === "teacher") {
+      return <TeacherManage />;
+    }
+    // If teacher selects Profile, show TeacherProfile component
+    if (activePage === "Profile" && userRole === "teacher") {
+      return <TeacherProfile />;
     }
 
     // Card style for content
