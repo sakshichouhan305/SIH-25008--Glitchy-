@@ -103,7 +103,7 @@ export default function Home() {
             <div className="space-y-6">
               {/* Badge */}
               <div className="inline-flex items-center space-x-2 bg-blue-100 text-blue-800 px-4 py-2 rounded-full text-sm font-medium">
-                <span className="text-lg">🛡️</span>
+                <span className="text-lg">🛡</span>
                 <span>For Schools & Colleges in India</span>
               </div>
               {/* Title - Reduced size */}
@@ -229,7 +229,7 @@ export default function Home() {
 
             {/* Admins Card */}
             <div className="bg-gradient-to-br from-red-50 to-pink-50 border border-red-100 rounded-2xl p-6 lg:p-8 hover:shadow-xl hover:-translate-y-2 transition-all duration-300 group md:col-span-2 lg:col-span-1">
-              <div className="text-4xl mb-4 group-hover:scale-110 transition-transform duration-300">⚠️</div>
+              <div className="text-4xl mb-4 group-hover:scale-110 transition-transform duration-300">⚠</div>
               <h3 className="text-lg font-bold text-gray-900 mb-4 group-hover:text-red-600 transition-colors">
                 Admins
               </h3>

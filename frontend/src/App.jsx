@@ -1,5 +1,6 @@
 
 import './App.css'
+import AddInstitute from './components/AddInstitute'
 import Login from './components/login'
 import LoginComponent from './components/login'
 import Admin from './pages/admin'
@@ -10,7 +11,8 @@ function App() {
 
 
   return (
-    <Home/>
+    // <Home/>
+    <Login/>
   )
 }
 
