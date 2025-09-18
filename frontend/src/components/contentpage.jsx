@@ -3,6 +3,8 @@ import StudentDashboard from "./StudentDashboard";
 import TeacherDashboard from "./TeacherDashboard";
 import AdminDashboard from "./AdminDashboard";
 import Post from "./post";
+import StudentProfile from "./StudentProfile";
+import StudentLeaderboard from "./StudentLeaderboard";
 
 const Content = memo(({ activePage }) => {
   const [userRole, setUserRole] = useState(null);
@@ -36,9 +38,18 @@ const Content = memo(({ activePage }) => {
   };
 
   const renderContent = () => {
-    // If it's the dashboard or profile page, show role-specific dashboard
-    if (activePage === "Dashboard" || activePage === "Student Profile") {
+    // If it's the dashboard, show role-specific dashboard
+    if (activePage === "Dashboard") {
       return renderDashboard();
+    }
+
+    // If student selects Student Profile, show StudentProfile component
+    if (activePage === "Student Profile" && userRole === "student") {
+      return <StudentProfile />;
+    }
+    // If student selects Leaderboard, show StudentLeaderboard component
+    if (activePage === "Leaderboard" && userRole === "student") {
+      return <StudentLeaderboard />;
     }
 
     // Card style for content

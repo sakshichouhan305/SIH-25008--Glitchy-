@@ -71,9 +71,6 @@ export default function Admin() {
 
               {/* Auth Buttons */}
               <div className="flex items-center space-x-4">
-                <button className="text-gray-600 hover:text-blue-500 px-4 py-2 font-semibold transition-colors rounded-lg border border-gray-300 shadow-sm">
-                  Login
-                </button>
                 <button className="bg-blue-500 hover:bg-blue-600 text-white px-6 py-2 rounded-lg font-semibold transition-colors shadow-md">
                   Sign Up
                 </button>
