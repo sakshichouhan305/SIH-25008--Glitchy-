@@ -3,9 +3,9 @@ import 'dotenv/config';
 
 const connectDB = async () => {
     try {
-        const conn = await mongoose.connect(process.env.MONGO_URI || 'mongodb://localhost:27017/sih25008', {
-            useNewUrlParser: true,
-            useUnifiedTopology: true,
+        const conn = await mongoose.connect(process.env.MONGO_URI || 'mongodb://127.0.0.1:27017/sih25008', {
+            useNewUrlParser: false,
+            useUnifiedTopology: false,
         });
         console.log(`MongoDB Connected: ${conn.connection.host}`);
     } catch (error) {

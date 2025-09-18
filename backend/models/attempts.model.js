@@ -2,7 +2,7 @@ const mongoose = require("mongoose");
 
 const AttemptSchema = new mongoose.Schema({
   quiz: { type: mongoose.Schema.Types.ObjectId, ref: "Quiz", required: true },
-  student: { type: mongoose.Schema.Types.ObjectId, ref: "Student", required: true },
+  student: { type: mongoose.Schema.Types.ObjectId, ref: "student", required: true },
   answers: [
     {
       questionId: { type: mongoose.Schema.Types.ObjectId, required: true },

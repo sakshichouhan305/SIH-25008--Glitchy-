@@ -13,14 +13,15 @@ const getLesson = async (lessonId, studentId) => {
     }
 
     // Fetch or create lesson read
-    let lessonRead = await LessonRead.findOne({
+    if(studentId)
+    {let lessonRead = await LessonRead.findOne({
       lesson: lessonId,
       student: studentId,
     });
     if (!lessonRead) {
       lessonRead = new LessonRead({ lesson: lessonId, student: studentId });
       await lessonRead.save();
-    }
+    }}
 
     // Return the lesson
     return lesson;

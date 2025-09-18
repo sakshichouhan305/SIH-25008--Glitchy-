@@ -11,14 +11,9 @@ const QuizSchema = new mongoose.Schema({
   title: { type: String, required: true },
   description: { type: String },
   module: { type: mongoose.Schema.Types.ObjectId, ref: "Module" },
-  institute: {
-    type: mongoose.Schema.Types.ObjectId,
-    ref: "Institute",
-    required: true,
-  },
   createdBy: {
     type: mongoose.Schema.Types.ObjectId,
-    ref: "Admin",
+    ref: "institute-admin",
     required: true,
   },
   questions: [QuestionSchema],

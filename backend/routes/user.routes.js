@@ -1,13 +1,15 @@
 import express from "express";
 import {
-  createUser,
   updateUser,
   deleteUser,
+  createStudent,
+  createInstituteAdmin,
 } from "../controllers/userController.js";
 
 const router = express.Router();
 
-router.post("/create", createUser);
+router.post("/createStudent", createStudent);
+router.post("/createInstituteAdmin", createInstituteAdmin);
 router.put("/update/:id", updateUser);
 router.delete("/delete/:id", deleteUser);
 

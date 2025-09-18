@@ -33,13 +33,22 @@ const LoginPage = () => {
     return Object.keys(newErrors).length === 0;
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     if (validateForm()) {
-      // Save dummy token and role
-      localStorage.setItem("token", "dummy-token");
-      localStorage.setItem("role", formData.role.toLowerCase());
-      navigate("/admin", { replace: true });
+      const result = await fetch("http://localhost:3000/api/auth/login", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(formData),
+      });
+
+      if(result.ok) {
+        const data = await result.json();
+        localStorage.setItem("token", data.token);
+        localStorage.setItem("role", data.role.toLowerCase());
+        console.log("Login successful:", data);
+        navigate("/admin", { replace: true });
+      }
     }
   };
 
@@ -117,7 +126,7 @@ const LoginPage = () => {
                 className="w-full pl-9 pr-3 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-indigo-500 bg-gray-50 text-sm"
               >
                 <option value="Student">👨‍🎓 Student</option>
-                <option value="Teacher">👨‍🏫 Teacher</option>
+                <option value="Institute-Admin">👨‍🏫 Teacher</option>
                 <option value="Admin">👨‍💼 Admin</option>
               </select>
             </div>

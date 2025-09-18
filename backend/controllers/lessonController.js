@@ -2,11 +2,8 @@ import { getLesson } from "../services/lesson.services.js";
 
 const fetchLesson = async (req, res) => {
   const { id } = req.params;
-  const { studentId } = req.body; // Assuming studentId is passed in the request body
-
-  if (!studentId) {
-    return res.status(400).json({ message: "Student ID is required" });
-  }
+  const user = req.user;
+  const studentId = user && user.role === "student" ? user.id : null;
 
   try {
     const lesson = await getLesson(id, studentId);

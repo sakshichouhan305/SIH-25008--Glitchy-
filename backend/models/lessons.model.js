@@ -1,4 +1,6 @@
 import mongoose from "mongoose";
+import Module from "./modules.model.js";
+import {User} from "./user.model.js";
 
 const LessonSchema = new mongoose.Schema(
   {
@@ -11,7 +13,7 @@ const LessonSchema = new mongoose.Schema(
     },
     createdBy: {
       type: mongoose.Schema.Types.ObjectId,
-      ref: "User",
+      ref: "admin",
       required: true,
     },
   },

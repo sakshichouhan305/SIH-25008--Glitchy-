@@ -5,7 +5,7 @@ const ModuleSchema = new mongoose.Schema({
     description: { type: String },
     allowedDistricts: [{ type: String }],
     level: { type: String, enum: ['beginner', 'intermediate', 'advanced'], default: 'beginner' },
-    createdBy: { type: mongoose.Schema.Types.ObjectId, ref: "User", required: true },
+    createdBy: { type: mongoose.Schema.Types.ObjectId, ref: "admin", required: true },
 },
 { timestamps: true });
 
