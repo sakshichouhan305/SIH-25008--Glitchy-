@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import ImageSlider from "../components/ImageSlider";
-import SignUpPage from '../components/login';
+import SignUpPage from '../components/SignUp';
+import LoginPage from '../components/login';
 import img1 from '../assets/img1.jpg';
 import img2 from '../assets/img2.jpg';
 import img3 from '../assets/img3.jpg';
@@ -8,13 +9,12 @@ import img4 from '../assets/img4.jpg';
 
 
 export default function Home() {
-  const [showLogin, setShowLogin] = useState(false);
-    
-   const slides = [
+  const [modalType, setModalType] = useState(null); // null | 'login' | 'signup'
+  const slides = [
     { url: img1 },
-   { url: img2 },
-   { url: img3 },
-   { url: img4 }
+    { url: img2 },
+    { url: img3 },
+    { url: img4 }
   ];
   const containerStyles = {
     width: "900px",
@@ -24,23 +24,23 @@ export default function Home() {
 
   return (
     <div className="min-h-screen bg-gray-50">
-      {/* Login Modal */}
-      {showLogin && (
+      {/* Auth Modal */}
+      {modalType && (
         <div 
           className="fixed inset-0 bg-black bg-opacity-50 backdrop-blur-sm z-50 flex items-center justify-center overflow-y-auto"
-          onClick={() => setShowLogin(false)}
+          onClick={() => setModalType(null)}
         >
           <div 
             onClick={e => e.stopPropagation()} 
             className="relative w-full h-full"
           >
             <button 
-              onClick={() => setShowLogin(false)}
+              onClick={() => setModalType(null)}
               className="absolute top-4 right-4 text-white text-xl z-50 hover:text-gray-300"
             >
               ✕
             </button>
-            <SignUpPage />
+            {modalType === 'login' ? <LoginPage /> : <SignUpPage />}
           </div>
         </div>
       )}
@@ -68,12 +68,15 @@ export default function Home() {
             {/* Auth Buttons */}
             <div className="flex items-center space-x-4">
               <button 
-                onClick={() => setShowLogin(true)}
+                onClick={() => setModalType('login')}
                 className="text-gray-600 hover:text-blue-500 px-4 py-2 font-medium transition-colors"
               >
                 Login
               </button>
-              <button className="bg-blue-500 hover:bg-blue-600 text-white px-6 py-2 rounded-lg font-medium transition-colors">
+              <button 
+                onClick={() => setModalType('signup')}
+                className="bg-blue-500 hover:bg-blue-600 text-white px-6 py-2 rounded-lg font-medium transition-colors"
+              >
                 Sign Up
               </button>
             </div>
@@ -82,11 +85,11 @@ export default function Home() {
       </nav>
       
       <div>
-       <br></br>
-      <div style={containerStyles}>
-        <ImageSlider slides={slides} />
+        <br />
+        <div style={containerStyles}>
+          <ImageSlider slides={slides} />
+        </div>
       </div>
-    </div>
 
       {/* Hero Section */}
       <section className="bg-gradient-to-br from-gray-50 to-blue-50 py-8 lg:py-16">
