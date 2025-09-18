@@ -1,3 +1,5 @@
+import mongoose from "mongoose";
+
 const options = { discriminatorKey: "role", collection: "users" };
 
 const UserSchema = new mongoose.Schema({
