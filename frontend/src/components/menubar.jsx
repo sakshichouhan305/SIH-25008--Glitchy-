@@ -15,14 +15,32 @@ const icons = {
   "Add Module": <PlusSquare size={20} />,
   Quizes: <HelpCircle size={20} />,
   "Add Drill": <Hammer size={20} />,
-  Message: <MessageSquare size={20} />
+  Message: <MessageSquare size={20} />,
+  Logout: <User size={20} />
 };
 
 import { useState } from "react";
 
 export default function Sidebar({ adminAccess, setActive }) {
   const [activeItem, setActiveItem] = useState("Dashboard");
+  // Add Logout for student role
+  const role = localStorage.getItem("role")?.toLowerCase();
+  // Prevent duplicate Logout button if already present in adminAccess
+  let menuItems = adminAccess;
+  if (role === "student") {
+    const hasLogout = adminAccess.some(item => item.name === "Logout");
+    if (!hasLogout) {
+      menuItems = [...adminAccess, { name: "Logout" }];
+    }
+  }
+
   const handleClick = (name) => {
+    if (name === "Logout") {
+      localStorage.removeItem("token");
+      localStorage.removeItem("role");
+      window.location.href = "/"; // Redirect to home page
+      return;
+    }
     setActiveItem(name);
     setActive(name);
   };
@@ -32,7 +50,7 @@ export default function Sidebar({ adminAccess, setActive }) {
         <span className=" text-black px-2 py-1 rounded-lg">Menu</span>
       </h2>
       <ul className="space-y-3 text-gray-800 font-medium flex-1">
-        {adminAccess.map((value, key) => (
+        {menuItems.map((value, key) => (
           <li
             onClick={() => handleClick(value?.name)}
             key={key}
