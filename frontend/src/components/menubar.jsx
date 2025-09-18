@@ -1,21 +1,21 @@
 import React from "react";
-
+import { LayoutDashboard, User, BookOpen, Trophy, ListOrdered, FileText, School, UserPlus, Settings, Building2, PlusSquare, HelpCircle, Hammer, MessageSquare } from 'lucide-react';
 
 const icons = {
-  Dashboard: "📊",
-  "Student Profile": "👤",
-  Module: "📚",
-  Scoreboard: "🏆",
-  Leaderboard: "🥇",
-  Posts: "📝",
-  Institution: "🏫",
-  "Add Admin": "➕",
-  Management: "⚙️",
-  "Add Institute": "🏢",
-  "Add Module": "➕",
-  Quizes: "❓",
-  "Add Drill": "🛠️",
-  Message: "💬"
+  Dashboard: <LayoutDashboard size={20} />,
+  "Student Profile": <User size={20} />,
+  Module: <BookOpen size={20} />,
+  Scoreboard: <Trophy size={20} />,
+  Leaderboard: <ListOrdered size={20} />,
+  Posts: <FileText size={20} />,
+  Institution: <School size={20} />,
+  "Add Admin": <UserPlus size={20} />,
+  Management: <Settings size={20} />,
+  "Add Institute": <Building2 size={20} />,
+  "Add Module": <PlusSquare size={20} />,
+  Quizes: <HelpCircle size={20} />,
+  "Add Drill": <Hammer size={20} />,
+  Message: <MessageSquare size={20} />
 };
 
 export default function Sidebar({ adminAccess, setActive }) {
@@ -32,7 +32,7 @@ export default function Sidebar({ adminAccess, setActive }) {
             className="flex items-center gap-3 px-4 py-3 rounded-lg cursor-pointer transition-all duration-200 hover:bg-blue-500 hover:text-white shadow-sm group"
           >
             <span className="text-xl group-hover:scale-110 transition-transform duration-200">
-              {icons[value?.name] || "🔹"}
+              {icons[value?.name] || <LayoutDashboard size={20} />}
             </span>
             <span className="text-base font-semibold">{value?.name}</span>
           </li>
