@@ -18,7 +18,14 @@ const icons = {
   Message: <MessageSquare size={20} />
 };
 
+import { useState } from "react";
+
 export default function Sidebar({ adminAccess, setActive }) {
+  const [activeItem, setActiveItem] = useState("Dashboard");
+  const handleClick = (name) => {
+    setActiveItem(name);
+    setActive(name);
+  };
   return (
     <aside className="w-72 bg-gradient-to-b from-blue-50 to-blue-100 border-r shadow-xl p-6 min-h-screen flex flex-col">
       <h2 className="text-2xl font-bold mb-8 text-blue-700 tracking-wide flex items-center gap-2">
@@ -27,9 +34,9 @@ export default function Sidebar({ adminAccess, setActive }) {
       <ul className="space-y-3 text-gray-800 font-medium flex-1">
         {adminAccess.map((value, key) => (
           <li
-            onClick={() => setActive(value?.name)}
+            onClick={() => handleClick(value?.name)}
             key={key}
-            className="flex items-center gap-3 px-4 py-3 rounded-lg cursor-pointer transition-all duration-200 hover:bg-blue-500 hover:text-white shadow-sm group"
+            className={`flex items-center gap-3 px-4 py-3 rounded-lg cursor-pointer transition-all duration-200 shadow-sm group ${activeItem === value?.name ? "bg-blue-500 text-white" : "hover:bg-blue-500 hover:text-white"}`}
           >
             <span className="text-xl group-hover:scale-110 transition-transform duration-200">
               {icons[value?.name] || <LayoutDashboard size={20} />}
