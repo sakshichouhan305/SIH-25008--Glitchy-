@@ -15,7 +15,6 @@ import AdminAddInstitute from "./AdminAddInstitute";
 import AdminInstitution from "./AdminInstitution";
 import AdminAddModule from "./AdminAddModule";
 import AdminQuizes from "./AdminQuizes";
-import AdminNewAdmin from "./AdminNewAdmin";
 import TeacherProfile from "./TeacherProfile";
 
 const Content = memo(({ activePage }) => {
@@ -103,10 +102,7 @@ const Content = memo(({ activePage }) => {
         }
         return <div className={cardClass}><h2 className="text-2xl font-bold mb-2 text-blue-800">Institution Management</h2><p className="text-gray-700">Manage institutions and their details.</p></div>;
       case "Add Admin":
-          if (userRole === "admin") {
-            return <AdminNewAdmin />;
-          }
-          return <div className={cardClass}><h2 className="text-2xl font-bold mb-2 text-pink-600">Add New Admin</h2><p className="text-gray-700">Add a new admin to the system.</p></div>;
+        return <div className={cardClass}><h2 className="text-2xl font-bold mb-2 text-pink-600">Add New Admin</h2><p className="text-gray-700">Add a new admin to the system.</p></div>;
       case "Management":
         return <div className={cardClass}><h2 className="text-2xl font-bold mb-2 text-gray-800">System Management</h2><p className="text-gray-700">Configure and manage system settings.</p></div>;
       case "Add Institute":
