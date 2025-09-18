@@ -1,99 +1,34 @@
 import { useState, useEffect } from 'react';
-
+import { BookOpen, Trophy, ListOrdered, User, FileText, LogOut, School, LayoutDashboard, UserPlus, Settings, Smartphone, Building2, PlusSquare, HelpCircle, Target, MessageSquare, Users,} from 'lucide-react';
 
 const studentAccess = [
-  {
-    name: "Module",
-    icon: "📚"
-  },
-  {
-    name: "Scoreboard",
-    icon: "📊"
-  },
-  {
-    name: "Leaderboard",
-    icon: "🏆"
-  },
-  {
-    name: "Student Profile",
-    icon: "👤"
-  },
-  {
-    name: "Posts",
-    icon: "📝"
-  },
-  {
-    name: "Logout",
-    icon: "🚪"
-  }
+  { name: "Module", icon: <BookOpen size={18} /> },
+  { name: "Scoreboard", icon: <Trophy size={18} /> },
+  { name: "Leaderboard", icon: <ListOrdered size={18} /> },
+  { name: "Student Profile", icon: <User size={18} /> },
+  { name: "Posts", icon: <FileText size={18} /> },
+  { name: "Logout", icon: <LogOut  size={18} /> }
 ];
 
 const teacherAccess = [
-  {
-    name: "Institution",
-    icon: "🏫"
-  },
-  {
-    name: "Dashboard",
-    icon: "📊"
-  },
-  {
-    name: "Leaderboard",
-    icon: "🏆"
-  },
-  {
-    name: "Profile",
-    icon: "👤"
-  },
-  {
-    name: "Add Admin",
-    icon: "➕"
-  },
-  {
-    name: "Posts",
-    icon: "📝"
-  },
-  {
-    name: "Management",
-    icon: "⚙️"
-  },
-
+  { name: "Institution", icon: <School size={18} /> },
+  { name: "Dashboard", icon: <LayoutDashboard size={18} /> },
+  { name: "Leaderboard", icon: <ListOrdered size={18} /> },
+  { name: "Profile", icon: <User size={18} /> },
+  { name: "Add Admin", icon: <UserPlus size={18} /> },
+  { name: "Posts", icon: <FileText size={18} /> },
+  { name: "Management", icon: <Settings size={18} /> }
 ];
 
 const adminAccess = [
-  {
-    name: "Application",
-    icon: "📱"
-  },
-  {
-    name: "Add Institute",
-    icon: "🏫"
-  },
-  {
-    name: "Add Module",
-    icon: "📚"
-  },
-  {
-    name: "Quizes",
-    icon: "✍️"
-  },
-  {
-    name: "Add Drill",
-    icon: "🎯"
-  },
-  {
-    name: "Message",
-    icon: "💬"
-  },
-  {
-    name: "New Admin",
-    icon: "👥"
-  },
-  {
-    name: "Institution",
-    icon: "🏢"
-  },
- 
+  { name: "Application", icon: <Smartphone size={18} /> },
+  { name: "Add Institute", icon: <Building2 size={18} /> },
+  { name: "Add Module", icon: <PlusSquare size={18} /> },
+  { name: "Quizes", icon: <HelpCircle size={18} /> },
+  { name: "Add Drill", icon: <Target size={18} /> },
+  { name: "Message", icon: <MessageSquare size={18} /> },
+  { name: "New Admin", icon: <Users size={18} /> },
+  { name: "Institution", icon: <School size={18} /> }
 ];
 
 export default function Access() {
