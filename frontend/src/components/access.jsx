@@ -17,18 +17,21 @@ const teacherAccess = [
   { name: "Profile", icon: <User size={18} /> },
   { name: "Add Admin", icon: <UserPlus size={18} /> },
   { name: "Posts", icon: <FileText size={18} /> },
-  { name: "Management", icon: <Settings size={18} /> }
+  { name: "Management", icon: <Settings size={18} /> },
+  { name: "Logout", icon: <LogOut  size={18} /> }
 ];
 
 const adminAccess = [
   { name: "Application", icon: <Smartphone size={18} /> },
   { name: "Add Institute", icon: <Building2 size={18} /> },
   { name: "Add Module", icon: <PlusSquare size={18} /> },
+  { name: "Posts", icon: <FileText size={18} /> },
   { name: "Quizes", icon: <HelpCircle size={18} /> },
   { name: "Add Drill", icon: <Target size={18} /> },
   { name: "Message", icon: <MessageSquare size={18} /> },
   { name: "New Admin", icon: <Users size={18} /> },
-  { name: "Institution", icon: <School size={18} /> }
+  { name: "Institution", icon: <School size={18} /> },
+  { name: "Logout", icon: <LogOut  size={18} /> }
 ];
 
 export default function Access() {

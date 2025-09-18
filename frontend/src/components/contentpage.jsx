@@ -2,6 +2,7 @@ import React, { memo, useEffect, useState } from "react";
 import StudentDashboard from "./StudentDashboard";
 import TeacherDashboard from "./TeacherDashboard";
 import AdminDashboard from "./AdminDashboard";
+import Post from "./post";
 
 const Content = memo(({ activePage }) => {
   const [userRole, setUserRole] = useState(null);
@@ -52,7 +53,7 @@ const Content = memo(({ activePage }) => {
       case "Leaderboard":
         return <div className={cardClass}><h2 className="text-2xl font-bold mb-2 text-yellow-600">Leaderboard</h2><p className="text-gray-700">See top performers and rankings.</p></div>;
       case "Posts":
-        return <div className={cardClass}><h2 className="text-2xl font-bold mb-2 text-purple-600">Posts</h2><p className="text-gray-700">Share and view posts from the community.</p></div>;
+        return <Post />;
       case "Institution":
         return <div className={cardClass}><h2 className="text-2xl font-bold mb-2 text-blue-800">Institution Management</h2><p className="text-gray-700">Manage institutions and their details.</p></div>;
       case "Add Admin":

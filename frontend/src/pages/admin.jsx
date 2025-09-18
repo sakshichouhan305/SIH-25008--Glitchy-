@@ -4,7 +4,7 @@ import Content from "../components/contentpage";
 import Access, { studentAccess, teacherAccess, adminAccess } from '../components/access';
 
 export default function Admin() {
-    const [active, setActive] = useState(null);
+  const [active, setActive] = useState("Dashboard");
     const [token, setToken] = useState(null);
     const [role, setRole] = useState(null);
     const [sidebarAccess, setSidebarAccess] = useState([]);
@@ -43,9 +43,6 @@ export default function Admin() {
         );
     }
 
-    // Find the active component
-    const activeComponent = sidebarAccess.find(item => item.name === active)?.component;
-
     return (
       <div className="min-h-screen flex flex-col bg-gradient-to-br from-blue-50 via-white to-blue-100">
         {/* Navbar */}
@@ -64,30 +61,12 @@ export default function Admin() {
 
               {/* Navigation Links */}
               <div className="hidden md:flex items-center space-x-8">
-                <a
-                  href="#features"
-                  className="text-gray-600 hover:text-blue-500 font-semibold transition-colors px-2"
-                >
-                  Features
-                </a>
-                <a
-                  href="#students"
-                  className="text-gray-600 hover:text-blue-500 font-semibold transition-colors px-2"
-                >
-                  Students
-                </a>
-                <a
-                  href="#teachers"
-                  className="text-gray-600 hover:text-blue-500 font-semibold transition-colors px-2"
-                >
-                  Teachers
-                </a>
-                <a
-                  href="#admin"
-                  className="text-gray-600 hover:text-blue-500 font-semibold transition-colors px-2"
-                >
-                  Admin
-                </a>
+                  <a href="#faq" className="text-gray-600 hover:text-blue-500 font-semibold transition-colors px-2">
+                    FAQ's
+                  </a>
+                  <a href="#emergency" className="text-gray-600 hover:text-blue-500 font-semibold transition-colors px-2">
+                    Emergency
+                  </a>
               </div>
 
               {/* Auth Buttons */}
@@ -107,7 +86,7 @@ export default function Admin() {
         <div className="flex flex-1 overflow-hidden">
           <Sidebar adminAccess={sidebarAccess} setActive={setActive} />
           <div className="flex-1 overflow-y-auto">
-            {activeComponent ? <activeComponent /> : <Content activePage={active} />}
+            <Content activePage={active} />
           </div>
         </div>
       </div>

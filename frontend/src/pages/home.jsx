@@ -58,18 +58,12 @@ export default function Home() {
             </div>
             {/* Navigation Links */}
             <div className="hidden md:flex items-center space-x-8">
-              <a href="#features" className="text-gray-600 hover:text-blue-500 font-medium transition-colors">
-                Features
-              </a>
-              <a href="#students" className="text-gray-600 hover:text-blue-500 font-medium transition-colors">
-                Students
-              </a>
-              <a href="#teachers" className="text-gray-600 hover:text-blue-500 font-medium transition-colors">
-                Teachers
-              </a>
-              <a href="#admin" className="text-gray-600 hover:text-blue-500 font-medium transition-colors">
-                Admin
-              </a>
+                <a href="#faq" className="text-gray-700 hover:text-blue-400 font-bold transition-colors flex items-center gap-1">
+                  FAQ's
+                </a>
+                <a href="#emergency" className="text-gray-700 hover:text-blue-400 font-bold transition-colors flex items-center gap-1">
+                  Emergency
+                </a>
             </div>
             {/* Auth Buttons */}
             <div className="flex items-center space-x-4">
