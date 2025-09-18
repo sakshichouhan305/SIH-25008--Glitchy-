@@ -29,7 +29,7 @@ const Content = memo(({ activePage }) => {
     switch (userRole) {
       case "student":
         return <StudentDashboard />;
-      case "teacher":
+      case "institute-admin":
         return <TeacherDashboard />;
       case "admin":
         return <AdminDashboard />;
