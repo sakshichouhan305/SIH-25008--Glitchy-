@@ -9,6 +9,13 @@ import TeacherAddAdmin from "./TeacherAddAdmin";
 import TeacherInstitute from "./TeacherInstitute";
 import TeacherLeaderboard from "./TeacherLeaderboard";
 import TeacherManage from "./TeacherManage";
+import AdminMessages from "./AdminMessages";
+import AdminApplication from "./AdminApplication";
+import AdminAddInstitute from "./AdminAddInstitute";
+import AdminInstitution from "./AdminInstitution";
+import AdminAddModule from "./AdminAddModule";
+import AdminQuizes from "./AdminQuizes";
+import AdminNewAdmin from "./AdminNewAdmin";
 import TeacherProfile from "./TeacherProfile";
 
 const Content = memo(({ activePage }) => {
@@ -91,21 +98,44 @@ const Content = memo(({ activePage }) => {
       case "Posts":
         return <Post />;
       case "Institution":
+        if (userRole === "admin") {
+          return <AdminInstitution />;
+        }
         return <div className={cardClass}><h2 className="text-2xl font-bold mb-2 text-blue-800">Institution Management</h2><p className="text-gray-700">Manage institutions and their details.</p></div>;
       case "Add Admin":
-        return <div className={cardClass}><h2 className="text-2xl font-bold mb-2 text-pink-600">Add New Admin</h2><p className="text-gray-700">Add a new admin to the system.</p></div>;
+          if (userRole === "admin") {
+            return <AdminNewAdmin />;
+          }
+          return <div className={cardClass}><h2 className="text-2xl font-bold mb-2 text-pink-600">Add New Admin</h2><p className="text-gray-700">Add a new admin to the system.</p></div>;
       case "Management":
         return <div className={cardClass}><h2 className="text-2xl font-bold mb-2 text-gray-800">System Management</h2><p className="text-gray-700">Configure and manage system settings.</p></div>;
       case "Add Institute":
+        if (userRole === "admin") {
+          return <AdminAddInstitute />;
+        }
         return <div className={cardClass}><h2 className="text-2xl font-bold mb-2 text-indigo-600">Add New Institute</h2><p className="text-gray-700">Register a new institute.</p></div>;
       case "Add Module":
+        if (userRole === "admin") {
+          return <AdminAddModule />;
+        }
         return <div className={cardClass}><h2 className="text-2xl font-bold mb-2 text-blue-500">Add New Module</h2><p className="text-gray-700">Create a new learning module.</p></div>;
       case "Quizes":
+        if (userRole === "admin") {
+          return <AdminQuizes />;
+        }
         return <div className={cardClass}><h2 className="text-2xl font-bold mb-2 text-red-600">Quiz Management</h2><p className="text-gray-700">Manage quizzes and assessments.</p></div>;
       case "Add Drill":
         return <div className={cardClass}><h2 className="text-2xl font-bold mb-2 text-teal-600">Add New Drill</h2><p className="text-gray-700">Add drills for practice.</p></div>;
       case "Message":
+        if (userRole === "admin") {
+          return <AdminMessages />;
+        }
         return <div className={cardClass}><h2 className="text-2xl font-bold mb-2 text-blue-400">Messages</h2><p className="text-gray-700">View and send messages.</p></div>;
+      case "Application":
+        if (userRole === "admin") {
+          return <AdminApplication />;
+        }
+        return <div className={cardClass}><h2 className="text-2xl font-bold mb-2 text-blue-400">Applications</h2><p className="text-gray-700">View institute applications.</p></div>;
       default:
         return renderDashboard(); // Show dashboard as default view
     }
