@@ -4,6 +4,7 @@ import connectDB from "./config/db.js";
 import authRoutes from "./routes/auth.routes.js";
 import userRoutes from "./routes/user.routes.js";
 import quizRoutes from "./routes/quiz.routes.js";
+import lessonRoutes from "./routes/lessons.route.js";
 
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -16,6 +17,7 @@ app.use(express.json());
 app.use("/api/auth", authRoutes);
 app.use("/api/user", userRoutes);
 app.use("/api/quiz", quizRoutes);
+app.use("/api/lessons", lessonRoutes);
 
 app.get("/", (req, res) => {
   res.send("Hello World!");
