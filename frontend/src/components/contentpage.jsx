@@ -21,9 +21,14 @@ const Content = memo(({ activePage }) => {
         return <AdminDashboard />;
       default:
         return (
-          <div className="text-center py-10">
-            <h1 className="text-3xl font-bold mb-4">Welcome</h1>
-            <p className="text-gray-600">Please log in to continue.</p>
+          <div className="flex flex-col items-center justify-center py-16">
+            <div className="bg-white rounded-xl shadow-lg p-8 max-w-md w-full">
+              <h1 className="text-4xl font-extrabold mb-4 text-blue-600 text-center">Welcome!</h1>
+              <p className="text-gray-600 text-center mb-2">Please log in to continue and access your dashboard.</p>
+              <div className="flex justify-center mt-4">
+                <button className="bg-blue-500 hover:bg-blue-600 text-white px-6 py-2 rounded-lg font-semibold transition-colors shadow-md">Login</button>
+              </div>
+            </div>
           </div>
         );
     }
@@ -35,51 +40,42 @@ const Content = memo(({ activePage }) => {
       return renderDashboard();
     }
 
+    // Card style for content
+    const cardClass = "bg-white rounded-xl shadow-lg p-8 max-w-2xl mx-auto mt-10 text-center animate-fade-in";
+
     // Handle other pages based on activePage prop
     switch (activePage) {
       case "Module":
-        return <div>Module Content</div>;
-      
+        return <div className={cardClass}><h2 className="text-2xl font-bold mb-2 text-blue-600">Module</h2><p className="text-gray-700">Explore learning modules tailored for you.</p></div>;
       case "Scoreboard":
-        return <div>Scoreboard Content</div>;
-      
+        return <div className={cardClass}><h2 className="text-2xl font-bold mb-2 text-green-600">Scoreboard</h2><p className="text-gray-700">Track your progress and scores here.</p></div>;
       case "Leaderboard":
-        return <div>Leaderboard Content</div>;
-      
+        return <div className={cardClass}><h2 className="text-2xl font-bold mb-2 text-yellow-600">Leaderboard</h2><p className="text-gray-700">See top performers and rankings.</p></div>;
       case "Posts":
-        return <div>Posts Content</div>;
-      
+        return <div className={cardClass}><h2 className="text-2xl font-bold mb-2 text-purple-600">Posts</h2><p className="text-gray-700">Share and view posts from the community.</p></div>;
       case "Institution":
-        return <div>Institution Management</div>;
-      
+        return <div className={cardClass}><h2 className="text-2xl font-bold mb-2 text-blue-800">Institution Management</h2><p className="text-gray-700">Manage institutions and their details.</p></div>;
       case "Add Admin":
-        return <div>Add New Admin</div>;
-      
+        return <div className={cardClass}><h2 className="text-2xl font-bold mb-2 text-pink-600">Add New Admin</h2><p className="text-gray-700">Add a new admin to the system.</p></div>;
       case "Management":
-        return <div>System Management</div>;
-      
+        return <div className={cardClass}><h2 className="text-2xl font-bold mb-2 text-gray-800">System Management</h2><p className="text-gray-700">Configure and manage system settings.</p></div>;
       case "Add Institute":
-        return <div>Add New Institute</div>;
-      
+        return <div className={cardClass}><h2 className="text-2xl font-bold mb-2 text-indigo-600">Add New Institute</h2><p className="text-gray-700">Register a new institute.</p></div>;
       case "Add Module":
-        return <div>Add New Module</div>;
-      
+        return <div className={cardClass}><h2 className="text-2xl font-bold mb-2 text-blue-500">Add New Module</h2><p className="text-gray-700">Create a new learning module.</p></div>;
       case "Quizes":
-        return <div>Quiz Management</div>;
-      
+        return <div className={cardClass}><h2 className="text-2xl font-bold mb-2 text-red-600">Quiz Management</h2><p className="text-gray-700">Manage quizzes and assessments.</p></div>;
       case "Add Drill":
-        return <div>Add New Drill</div>;
-      
+        return <div className={cardClass}><h2 className="text-2xl font-bold mb-2 text-teal-600">Add New Drill</h2><p className="text-gray-700">Add drills for practice.</p></div>;
       case "Message":
-        return <div>Messages</div>;
-
+        return <div className={cardClass}><h2 className="text-2xl font-bold mb-2 text-blue-400">Messages</h2><p className="text-gray-700">View and send messages.</p></div>;
       default:
         return renderDashboard(); // Show dashboard as default view
     }
   };
 
   return (
-    <main className="flex-1 p-8 bg-gray-50">
+    <main className="flex-1 p-8 bg-gradient-to-br from-blue-50 via-white to-blue-100 min-h-screen">
       {renderContent()}
     </main>
   );
