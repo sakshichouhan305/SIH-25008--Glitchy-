@@ -1,4 +1,4 @@
-const mongoose = require("mongoose");
+import mongoose from "mongoose";
 
 const AttemptSchema = new mongoose.Schema({
   quiz: { type: mongoose.Schema.Types.ObjectId, ref: "Quiz", required: true },
@@ -18,4 +18,4 @@ const AttemptSchema = new mongoose.Schema({
   duration: { type: Number }, 
 });
 
-export default AttemptSchema
+export default mongoose.model("Attempt", AttemptSchema);

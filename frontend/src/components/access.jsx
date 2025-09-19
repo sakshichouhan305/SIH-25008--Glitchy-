@@ -23,7 +23,6 @@ const teacherAccess = [
 
 const adminAccess = [
   { name: "Application", icon: <Smartphone size={18} /> },
-  { name: "Add Institute", icon: <Building2 size={18} /> },
   { name: "Add Module", icon: <PlusSquare size={18} /> },
   { name: "Posts", icon: <FileText size={18} /> },
   { name: "Quizes", icon: <HelpCircle size={18} /> },

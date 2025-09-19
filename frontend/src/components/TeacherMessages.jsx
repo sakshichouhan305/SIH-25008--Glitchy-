@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 
-export default function AdminMessages() {
+// This component intentionally mirrors AdminMessages but is named for teacher/institute-admin usage.
+export default function TeacherMessages() {
 	const [posts, setPosts] = useState([]);
 	const [loading, setLoading] = useState(false);
 	const [error, setError] = useState("");
@@ -12,7 +13,7 @@ export default function AdminMessages() {
 		setError("");
 		try {
 			const res = await fetch("http://localhost:3000/api/posts", { mode: "cors" });
-			const json = await res.json();
+			const json = await res.json().catch(() => null);
 			if (!res.ok) throw new Error(json?.message || `Failed to fetch posts (${res.status})`);
 			setPosts(Array.isArray(json) ? json : json.posts || json);
 		} catch (err) {
@@ -47,11 +48,10 @@ export default function AdminMessages() {
 					"Content-Type": "application/json",
 					...(token ? { Authorization: `Bearer ${token}` } : {}),
 				},
-				body: JSON.stringify(newPost), // no recipient field sent
+				body: JSON.stringify(newPost),
 			});
 			const json = await res.json().catch(() => null);
 			if (!res.ok) throw new Error(json?.message || `Failed to create post (${res.status})`);
-			// prepend new post and clear form (fetch again to ensure populated data)
 			await fetchPosts();
 			setNewPost({ title: "", content: "" });
 		} catch (err) {
@@ -62,9 +62,8 @@ export default function AdminMessages() {
 
 	return (
 		<div className="max-w-2xl mx-auto mt-10 bg-white shadow-xl rounded-3xl p-8 border border-blue-200">
-			<h2 className="text-2xl font-bold text-blue-700 text-center mb-6">📨 Admin Messages</h2>
+			<h2 className="text-2xl font-bold text-blue-700 text-center mb-6">📨 Institute Posts</h2>
 
-			{/* Send Message Form - only for admin / institute-admin */}
 			{(role === "admin" || role === "institute-admin") && (
 				<form onSubmit={handleSend} className="mb-8 bg-blue-50 p-6 rounded-xl border border-blue-200">
 					<div className="mb-3">
@@ -78,7 +77,6 @@ export default function AdminMessages() {
 				</form>
 			)}
 
-			{/* Messages List */}
 			<div className="space-y-4">
 				{loading && <div className="text-center text-gray-500">Loading...</div>}
 				{!loading && posts.length === 0 && <div className="text-center text-gray-500">No posts yet.</div>}

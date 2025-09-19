@@ -243,7 +243,7 @@ const SignUpPage = () => {
                 className="w-full pl-9 pr-3 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-indigo-500 bg-gray-50 text-sm"
               >
                 <option value="Student">👨‍🎓 Student</option>
-                <option value="Teacher">👨‍🏫 Teacher</option>
+                <option value="Institute-Admin">👨‍🏫 Teacher</option>
                 <option value="Admin">👨‍💼 Admin</option>
               </select>
             </div>

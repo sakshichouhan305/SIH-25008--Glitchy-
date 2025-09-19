@@ -13,6 +13,7 @@ const icons = {
   Management: <Settings size={20} />,
   "Add Institute": <Building2 size={20} />,
   "Add Module": <PlusSquare size={20} />,
+  "Add Lesson": <PlusSquare size={20} />, // added icon mapping
   Quizes: <HelpCircle size={20} />,
   "Add Drill": <Hammer size={20} />,
   Message: <MessageSquare size={20} />,
@@ -27,6 +28,13 @@ export default function Sidebar({ adminAccess, setActive }) {
   const role = localStorage.getItem("role")?.toLowerCase();
   // Prevent duplicate Logout button if already present in adminAccess
   let menuItems = adminAccess;
+  // Ensure admin / institute-admin see "Add Lesson" in sidebar (append if not present)
+  if (role === "admin" || role === "institute-admin") {
+    const hasAddLesson = menuItems.some(item => item?.name === "Add Lesson");
+    if (!hasAddLesson) {
+      menuItems = [...menuItems, { name: "Add Lesson" }];
+    }
+  }
   if (role === "student") {
     const hasLogout = adminAccess.some(item => item.name === "Logout");
     if (!hasLogout) {

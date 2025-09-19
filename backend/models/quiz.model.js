@@ -9,15 +9,15 @@ const QuestionSchema = new mongoose.Schema({
 
 const QuizSchema = new mongoose.Schema({
   title: { type: String, required: true },
+  quizId: { type: String, required: true, unique: true },
   description: { type: String },
-  module: { type: mongoose.Schema.Types.ObjectId, ref: "Module" },
+  module: { type: mongoose.Schema.Types.ObjectId, ref: "Lesson" },
   createdBy: {
     type: mongoose.Schema.Types.ObjectId,
-    ref: "institute-admin",
+    ref: "admin",
     required: true,
   },
   questions: [QuestionSchema],
-  attempts: [{ type: mongoose.Schema.Types.ObjectId, ref: "Attempt" }],
   createdAt: { type: Date, default: Date.now },
 });
 

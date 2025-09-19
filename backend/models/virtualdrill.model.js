@@ -12,6 +12,7 @@ const actionSchema = new mongoose.Schema({
 const assetsSchema = new mongoose.Schema({
     name: { type: String, required: true },
     actions:[actionSchema],
+    imageURL:{ type: String ,required: true },
     isStatic:{ type: Boolean, default: false },
     type:{ type: String, enum: ['model','text','raw'], required: true },
     position:{ x: Number, y: Number, z: Number },
